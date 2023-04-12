@@ -5,55 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/style.css">
+
   <title>Frontend Mentor | Loopstudios landing page</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
-  About
-  Careers
-  Events
-  Products
-  Support
+  <header>
+    <img class="logo" src="./images/logo.svg">
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link">About</a></li>
+        <li class="nav-item"><a class="nav-link">Careers</a></li>
+        <li class="nav-item"><a class="nav-link">Events</a></li>
+        <li class="nav-item"><a class="nav-link">Products</a></li>
+        <li class="nav-item"><a class="nav-link">Support</a></li>
+      </ul>
+    </nav>
+    <h1 class="header-title">Immersive experiences that deliver</h1>
+  </header>
+  
+  <main>
+    <div class="hero-content">
+      <img class="hero-img" src="">
+      <h2 class="hero-title">The leader in interactive VR</h2>
+      <p class="hero-body">
+        Founded in 2011, Loopstudios has been producing world-class virtual reality 
+        projects for some of the best companies around the globe. Our award-winning 
+        creations have transformed businesses through digital experiences that bind 
+        to their brand.
+      </p>  
+    </div>
+  
+    <div class="image-gallery">
+      <h2 class="gallery-title">Our creations</h2>
+      <a class="gallery-btn">See all</a>
+    
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">Deep earth</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">Night arcade</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">Soccer team VR</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">The grid</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">From up above VR</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">Pocket borealis</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">The curiosity</p>
+      </div>
+      <div class="card">
+        <img class="card-img" src="">
+        <p class="card-body">Make it fisheye</p>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <img class="logo logo-footer" src="./images/logo.svg">
+    <div class="social-list">
+      <img class="social-icon" src="./images/icon-facebook.svg">
+      <img class="social-icon" src="./images/icon-twitter.svg">
+      <img class="social-icon" src="./images/icon-pinterest.svg">
+      <img class="social-icon" src="./images/icon-instagram.svg">
+      <!-- I can also use font awesome ato get these images, they may provide better customisation in css w/o having to write out the whole svg-->
+    </div>
+    <ul class="footer-nav nav-list">
+      <li class="nav-item"><a class="nav-link">About</a></li>
+      <li class="nav-item"><a class="nav-link">Careers</a></li>
+      <li class="nav-item"><a class="nav-link">Events</a></li>
+      <li class="nav-item"><a class="nav-link">Products</a></li>
+      <li class="nav-item"><a class="nav-link">Support</a></li>
+    </ul>
+    <p class="copyright">© 2021 Loopstudios. All rights reserved.</p>
+    
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </div>  
+  </footer>
 
-  Immersive experiences that deliver
-
-  The leader in interactive VR
-
-  Founded in 2011, Loopstudios has been producing world-class virtual reality 
-  projects for some of the best companies around the globe. Our award-winning 
-  creations have transformed businesses through digital experiences that bind 
-  to their brand.
-
-  Our creations
-
-  See all
-
-  Deep earth
-  Night arcade
-  Soccer team VR
-  The grid
-  From up above VR
-  Pocket borealis
-  The curiosity
-  Make it fisheye
-
-  About
-  Careers
-  Events
-  Products
-  Support
-
-  © 2021 Loopstudios. All rights reserved.
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <script src="./js/script.js"></script>
 </body>
 </html>

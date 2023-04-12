@@ -1,0 +1,58 @@
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+:root {
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --dark-gray: hsl(0, 0%, 55%);
+  --very-dark-gray: hsl(0, 0%, 41%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, h1, h2, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  width: 100%; 
+}
+
+/* ==================
+   Typography
+===================== */
+
+body {
+  font-size: 15px;
+}
+
+h1, h2 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+a, p {
+  font-family: 'Alata', sans-serif;
+}
+
+
+/* ==================
+   Layout
+===================== */
+
+
+
+/* 
+  read my notes about object-fit: cover; for images.
+    maybe use width: 100% and aspect ratio: 1 / 1 aswell. 
+
+  you don't need to do position absolute for overlapping content in a grid, you just put them in the same column/row and set a grid index. 
+  google grid overlapping elements
+*/ 
