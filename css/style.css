@@ -35,13 +35,13 @@ body {
   font-size: 15px;
 }
 
-a, h1, h2, .card-body {
+h1, h2, .card-body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
 /* header nav is josefin font on mobile screens. that's why a tag is here. might need to seperate all the a tags if the rest a different, can't tell atm */ 
 
-p, .gallery-btn {
+a, p, .gallery-btn {
   font-family: 'Alata', sans-serif;
   font-weight: 400;
 }
@@ -78,11 +78,21 @@ main {
 }
 
 .header-title {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
+  border: 2px solid var(--white);
+  height: min-content;
+  padding: 0.6em;
+  margin-top: -1.5em;
+  width: min-content;
 }
 
 .hero-title, .gallery-title {
   font-size: 2rem;
+}
+
+.hero-body {
+  line-height: 1.7;
+  margin: 1em;
 }
 
 .card-body {
@@ -108,11 +118,12 @@ main {
 
 .grid {
   display: grid;
-  grid-template-columns: 1.5em auto auto 1.5em;
+  padding: 0 1.5em;
+  grid-template-columns: auto auto;
 }
 
 .grid > * {
-  grid-column: 2 / -2; 
+  grid-column: 1 / -1; 
 }
 
 .img-desktop {
@@ -120,6 +131,10 @@ main {
 }
 
 @media (min-width: 600px) {
+  .grid {
+    grid-template-columns: auto auto auto auto;
+  }
+
   .img-mobile {
     display: none;
   }
@@ -131,8 +146,11 @@ main {
 
 /* Header */ 
 
-header {
+.header {
   background: url(../images/mobile/image-hero.jpg); 
+  background-size: cover;
+  padding-top: 2.5em;
+  height: 650px;
 }
 
 .logo {
@@ -140,22 +158,21 @@ header {
 }
 
 .header-logo {
-  grid-column: 2 / 3;
-}
-
-.nav-mobile-menu {
-  grid-column: 3 / 4;
+  grid-column: 1 / span 1;
 }
 
 @media (min-width: 600px) {
-  header {
+  .header {
     background: url(../images/desktop/image-hero.jpg);
+    background-size: cover;
   }
 }
+
 
 /* Nav */ 
 
 .nav-mobile-menu {
+  /*grid-column: 3 / 4;*/
   margin-left: auto;
 }
 
@@ -173,11 +190,82 @@ header {
   }
 }
 
+.header-nav {
+  position: fixed; 
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100%;
+  transform: translateX(0);
+  transition: transform 250ms; 
+  width: 100%; 
+  height: 100vh;
+  background: var(--black);
+  z-index: 2;
+
+}
+
+.nav-open-nav {
+  transform: translateX(-100%);
+}
+
+.nav-open-body {
+  overflow: hidden; 
+}
+
+@media (min-width: 600px) {
+  .nav-mobile-menu {
+    display: none;
+  }
+  .header-nav {
+    position: initial;
+    width: unset;
+    /*grid-column: 3 / -2;*/
+    margin-left: auto;
+    width: unset;
+    height: unset;
+    background: unset;
+  }
+  .nav-logo, .nav-close-btn {
+    display: none;
+  }
+}
+
+.header-logo, .header-nav, .nav-mobile-menu {
+  grid-row: 1 / 2;
+}
+.header-title {
+  grid-row: 2 / 3;
+}
+
+
 
 /* Main */ 
+
+/* Hero Content */ 
+.hero-img {
+  margin: 6em 0 3em;
+}
+
+/* Image Gallery */ 
+.image-gallery {
+  margin-top: 5em;
+  margin-bottom: 7em;
+  gap: 1.5em;
+}
+
+.gallery-title {
+  margin-bottom: 0.8em;
+}
 .gallery-btn {
   order: 99;
   justify-self: center;
+}
+
+@media (min-width: 600px) {
+  .gallery-btn {
+    order: unset;
+  }
 }
 
 .card {
@@ -186,24 +274,64 @@ header {
 
 .card-body {
   position: absolute;
-  left: 1em;
-  bottom: 1em;
+  left: 0.9em;
+  bottom: 0.9em;
+  z-index: 2;
 }
 
+.card::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(255,255,255,0.2)) /* idk the most accurate gradient here but it'll do */ 
+}
+
+@media (min-width: 600px) {
+  .card {
+    grid-column: initial;
+  }
+  .card-body {
+    min-width: 125px;
+  }
+}
 
 /* Footer */ 
 
-footer {
+.footer {
   background: var(--black);
   justify-items: center;
+  padding: 4em 0;
 }
 
+.footer-logo {
+  order: 0;
+}
+.footer-nav {
+  order: 1;
+  margin: 2.2em 0 3em;
+}
+.nav-list {
+  gap: 1.4em;
+  text-align: center;
+}
+.social-list {
+  order: 2;
+  gap: 1em;
+  align-items: center;
+}
+.copyright {
+  order: 3;
+  margin-top: 1em;
+}
+.attribution {
+  order: 4;
+}
 
 /* ------------------------ */ 
-
-.header-nav, .nav-close-btn {
-  display: none;
-}
 
 @media (min-width: 600px) {
 
@@ -234,4 +362,14 @@ footer {
 
   
   try out the grid, then re-read my notes + watch the grid tuts to see what I need to change. 
+
+
+  To do: 
+    mobile design: paddings, heights, the above things for images. 
+    darken left side of card images. 
+
+
+
+  when doing the js for mobile nav, on btn click, add nav-open-body class to body & remove it on close. 
+    this removes the scrollbar when mobile-nav is open. 
 */ 
