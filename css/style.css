@@ -35,15 +35,21 @@ body {
   font-size: 15px;
 }
 
-h1, h2, .card-body {
+.header-nav a, h1, h2, .card-body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
-/* header nav is josefin font on mobile screens. that's why a tag is here. might need to seperate all the a tags if the rest a different, can't tell atm */ 
 
 a, p, .gallery-btn {
   font-family: 'Alata', sans-serif;
   font-weight: 400;
+}
+
+@media (min-width: 600px) {
+  .header-nav a {
+    font-family: 'Alata', sans-serif;
+    font-weight: 400;
+  }
 }
 
 .nav-list, .header-title, .card-body {
@@ -78,12 +84,24 @@ main {
 }
 
 .header-title {
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* need to change this to the varying font-size, with 2.5 @ 375px width and 2em @ 300px width */ 
   border: 2px solid var(--white);
   height: min-content;
   padding: 0.6em;
   margin-top: -1.5em;
   width: min-content;
+}
+
+@media (min-width: 600px) {
+  .header-title {
+    font-size: 4.5rem;
+    width: 60%;
+    max-width: 654px;
+    min-width: min-content;
+    padding-top: 0.5em;
+    padding-bottom: 0.4em;
+    margin-top: -0.1em;
+  }
 }
 
 .hero-title, .gallery-title {
@@ -104,9 +122,10 @@ main {
 .gallery-btn {
   font-size: 1rem;
   border: 2px solid var(--dark-gray);
-  padding: 0.5em 2.5em;
+  padding: 0.5em 2.5em 0.6em;
   display: inline-block;
   letter-spacing: 4px;
+  height: min-content;
 }
 
 
@@ -120,6 +139,8 @@ main {
   display: grid;
   padding: 0 1.5em;
   grid-template-columns: auto auto;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
 .grid > * {
@@ -131,6 +152,8 @@ main {
 }
 
 @media (min-width: 600px) {
+  body {
+  }
   .grid {
     grid-template-columns: auto auto auto auto;
   }
@@ -153,6 +176,10 @@ main {
   height: 650px;
 }
 
+.header-grid {
+  height: 100%;
+}
+
 .logo {
   width: 150px;
 }
@@ -165,11 +192,22 @@ main {
   .header {
     background: url(../images/desktop/image-hero.jpg);
     background-size: cover;
+    padding-top: 4.5em;
+  }
+  .logo {
+    width: 192px;
   }
 }
 
 
 /* Nav */ 
+
+.header-logo, .header-nav, .nav-mobile-menu {
+  grid-row: 1 / 2;
+}
+.header-title {
+  grid-row: 2 / 3;
+}
 
 .nav-mobile-menu {
   /*grid-column: 3 / 4;*/
@@ -184,12 +222,6 @@ main {
   flex-direction: column;
 }
 
-@media (min-width: 600px) {
-  .nav-list {
-    flex-direction: row;
-  }
-}
-
 .header-nav {
   position: fixed; 
   top: 0;
@@ -201,19 +233,34 @@ main {
   width: 100%; 
   height: 100vh;
   background: var(--black);
-  z-index: 2;
-
+  z-index: 3;
+}
+/* mobile nav styling */ 
+.nav-logo, .nav-close-btn {
+  position: absolute;
+  z-index: 4;
+  top: 2em;
 }
 
-.nav-open-nav {
-  transform: translateX(-100%);
+.nav-logo {
+  left: 1em;
 }
 
-.nav-open-body {
-  overflow: hidden; 
+.nav-close-btn {
+  right: 1em;
 }
+
+.header-nav .nav-list {
+  margin-top: 10em;
+  margin-left: 1em;
+  gap: 0.9em;
+}
+/* ---- */ 
 
 @media (min-width: 600px) {
+  .nav-list {
+    flex-direction: row;
+  }
   .nav-mobile-menu {
     display: none;
   }
@@ -229,16 +276,21 @@ main {
   .nav-logo, .nav-close-btn {
     display: none;
   }
+
+  .header-nav .nav-list {
+    gap: 1.4em;
+    margin-top: unset;
+    margin-left: unset;
+  }
 }
 
-.header-logo, .header-nav, .nav-mobile-menu {
-  grid-row: 1 / 2;
-}
-.header-title {
-  grid-row: 2 / 3;
+.nav-open-nav {
+  transform: translateX(-100%);
 }
 
-
+.nav-open-body {
+  overflow: hidden; 
+}
 
 /* Main */ 
 
@@ -266,6 +318,19 @@ main {
   .gallery-btn {
     order: unset;
   }
+  .card {
+    grid-column: initial;
+  }
+  .gallery-title, .gallery-btn {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+  }
+  .gallery-title {
+    justify-self: start;
+  }
+  .gallery-btn {
+    justify-self: end;
+  }
 }
 
 .card {
@@ -291,9 +356,6 @@ main {
 }
 
 @media (min-width: 600px) {
-  .card {
-    grid-column: initial;
-  }
   .card-body {
     min-width: 125px;
   }
@@ -303,8 +365,11 @@ main {
 
 .footer {
   background: var(--black);
-  justify-items: center;
   padding: 4em 0;
+}
+
+.footer-grid {
+  justify-items: center;
 }
 
 .footer-logo {
@@ -314,7 +379,7 @@ main {
   order: 1;
   margin: 2.2em 0 3em;
 }
-.nav-list {
+.footer-nav .nav-list {
   gap: 1.4em;
   text-align: center;
 }
@@ -343,31 +408,28 @@ main {
 
 
 /* 
+Learning Notes: 
   read my notes about object-fit: cover; for images.
     maybe use width: 100% and aspect ratio: 1 / 1 aswell. 
 
   you don't need to do position absolute for overlapping content in a grid, you just put them in the same column/row and set a grid index. 
   google grid overlapping elements
 
+*/
 
-  grid to do: 
-    header: 
-      logo spans 1 col 
-      nav spans 3 col but has margin-left: auto
-      title spans all cols but give it a width. 
-    
+/*
+  grid to do:     
     hero:
       img spans 3 rows but reduce the width to like 70% or something
       text spans 2 rows but has bg white + z index to sit on top of img. 
 
-  
-  try out the grid, then re-read my notes + watch the grid tuts to see what I need to change. 
-
-
   To do: 
-    mobile design: paddings, heights, the above things for images. 
-    darken left side of card images. 
-
+    js for mobile nav 
+    active states 
+    desktop design: 
+      darken header bg img 
+      use clamp font sizes for header-title + card-body 
+      hero content 
 
 
   when doing the js for mobile nav, on btn click, add nav-open-body class to body & remove it on close. 
