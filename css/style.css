@@ -113,10 +113,24 @@ main {
   margin: 1em;
 }
 
+@media (min-width: 600px) {
+  .hero-title, .gallery-title {
+    font-size: 3.1rem;
+  }
+  .hero-title {
+    margin-bottom: 0.5em;
+  }
+}
+
 .card-body {
   font-size: 1.5rem;
-  width: 40%;
   text-align: left;
+}
+
+@media (min-width: 600px) {
+  .card-body {
+    font-size: 2rem;
+  }
 }
 
 .gallery-btn {
@@ -152,8 +166,6 @@ main {
 }
 
 @media (min-width: 600px) {
-  body {
-  }
   .grid {
     grid-template-columns: auto auto auto auto;
   }
@@ -190,11 +202,12 @@ main {
 
 @media (min-width: 600px) {
   .header {
-    background: url(../images/desktop/image-hero.jpg);
+    background: url(../images/desktop/image-hero.jpg) rgba(0,0,0,0.4);
+    background-blend-mode: multiply;
     background-size: cover;
     padding-top: 4.5em;
   }
-  .logo {
+  .header-logo {
     width: 192px;
   }
 }
@@ -294,9 +307,33 @@ main {
 
 /* Main */ 
 
-/* Hero Content */ 
+/* Hero Section */ 
 .hero-img {
   margin: 6em 0 3em;
+}
+
+@media (min-width: 600px) {
+  .hero {
+    position: relative;
+  }
+  .hero-content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: white;
+    width: 50%;
+    max-width: 560px;
+    padding-left: 6em;
+    padding-top: 6em;
+    text-align: left;
+
+  }
+  .hero-img {
+    margin-bottom: 0;
+  }
+  .hero-body {
+    margin: 0;
+  }
 }
 
 /* Image Gallery */ 
@@ -315,6 +352,11 @@ main {
 }
 
 @media (min-width: 600px) {
+  .image-gallery {
+    margin-top: 12em;
+    margin-bottom: 12em;
+  }
+  
   .gallery-btn {
     order: unset;
   }
@@ -339,6 +381,7 @@ main {
 
 .card-body {
   position: absolute;
+  width: 40%;
   left: 0.9em;
   bottom: 0.9em;
   z-index: 2;
@@ -358,6 +401,10 @@ main {
 @media (min-width: 600px) {
   .card-body {
     min-width: 125px;
+    max-width: 190px;
+    width: 70%;
+    left: 1.3em;
+    bottom: 1.1em;
   }
 }
 
@@ -396,16 +443,66 @@ main {
   order: 4;
 }
 
-/* ------------------------ */ 
-
 @media (min-width: 600px) {
-
+  .footer {
+    padding: 3em 0 0;
+  }
+  .footer-logo {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    justify-self: start;
+  }
+  .social-list {
+    grid-column: 3 / 5; 
+    grid-row: 1;
+    justify-self: end;
+  }
+  .footer-nav, .copyright {
+    grid-row: 2; 
+    margin-top: 1.7em;
+  }
+  .footer-nav {
+    grid-column: 1 / 3; 
+    justify-self: start;
+  }
+  .copyright {
+    grid-column: 3 / 5;
+    justify-self: end;
+  }
 }
 
+/* Active States */ 
+.nav-link, .social-icon, .nav-mobile-menu, .nav-close-btn, .gallery-btn, .card {
+  cursor: pointer;
+}
 
+.gallery-btn:hover, .gallery-btn:focus {
+  border: 2px solid var(--black);
+  background: var(--black);
+  color: var(--white);
+}
 
+.social-item::after, .nav-item::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin-top: 8px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.social-item:hover::after, .nav-item:hover::after {
+  background: white;
+}
 
+.card:hover > .card-body {
+  color: var(--black);
+}
 
+.card:hover::after {
+  background: rgba(255, 255, 255, 0.7);
+}
 
 /* 
 Learning Notes: 
@@ -418,20 +515,14 @@ Learning Notes:
 */
 
 /*
-  grid to do:     
-    hero:
-      img spans 3 rows but reduce the width to like 70% or something
-      text spans 2 rows but has bg white + z index to sit on top of img. 
-
   To do: 
-    js for mobile nav 
-    active states 
-    desktop design: 
-      darken header bg img 
+    tablet design / fully responsive. 
       use clamp font sizes for header-title + card-body 
-      hero content 
 
+    mobile + desktop design = complete. 
 
-  when doing the js for mobile nav, on btn click, add nav-open-body class to body & remove it on close. 
-    this removes the scrollbar when mobile-nav is open. 
+    Done today: 
+      finished styling desktop site 
+      js for mobile nav 
+      active states 
 */ 
