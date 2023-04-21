@@ -84,7 +84,8 @@ main {
 }
 
 .header-title {
-  font-size: 2.5rem; /* need to change this to the varying font-size, with 2.5 @ 375px width and 2em @ 300px width */ 
+  /* font-size: 2.5rem; */ /* need to change this to the varying font-size, with 2.5 @ 375px width and 2em @ 300px width */ 
+  font-size: clamp(2rem, 0.5rem + 8vw, 3rem);
   border: 2px solid var(--white);
   height: min-content;
   padding: 0.6em;
@@ -94,7 +95,8 @@ main {
 
 @media (min-width: 600px) {
   .header-title {
-    font-size: 4.5rem;
+    /* font-size: 4.5rem; */ 
+    font-size: clamp(3rem, 1.75rem + 4vw, 4.5rem);
     width: 60%;
     max-width: 654px;
     min-width: min-content;
@@ -105,7 +107,8 @@ main {
 }
 
 .hero-title, .gallery-title {
-  font-size: 2rem;
+  /* font-size: 2rem; */ 
+  font-size: clamp(2rem, 0.9846rem + 2.7077vw, 3.1rem);
 }
 
 .hero-body {
@@ -113,23 +116,22 @@ main {
   margin: 1em;
 }
 
-@media (min-width: 600px) {
-  .hero-title, .gallery-title {
-    font-size: 3.1rem;
-  }
+@media (min-width: 800px) {
   .hero-title {
     margin-bottom: 0.5em;
   }
 }
 
 .card-body {
-  font-size: 1.5rem;
+  /*font-size: 1.5rem;*/
+  font-size: clamp(1.5rem, 0.6667rem + 3.5556vw, 2rem);
   text-align: left;
 }
 
 @media (min-width: 600px) {
   .card-body {
-    font-size: 2rem;
+    /* font-size: 2rem;*/ 
+    font-size: clamp(1.2rem, 0.24rem + 2.56vw, 2rem);
   }
 }
 
@@ -312,7 +314,7 @@ main {
   margin: 6em 0 3em;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .hero {
     position: relative;
   }
@@ -323,16 +325,22 @@ main {
     background: white;
     width: 50%;
     max-width: 560px;
-    padding-left: 6em;
-    padding-top: 6em;
+    padding-left: 5em;
+    padding-top: 5em;
     text-align: left;
-
   }
   .hero-img {
     margin-bottom: 0;
   }
   .hero-body {
     margin: 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .hero-content {
+    padding-left: 6em;
+    padding-top: 6em;
   }
 }
 
@@ -352,11 +360,6 @@ main {
 }
 
 @media (min-width: 600px) {
-  .image-gallery {
-    margin-top: 12em;
-    margin-bottom: 12em;
-  }
-  
   .gallery-btn {
     order: unset;
   }
@@ -375,15 +378,21 @@ main {
   }
 }
 
+@media (min-width: 800px) {
+  .image-gallery {
+    margin-top: 12em;
+    margin-bottom: 12em;
+  }
+}
+
 .card {
   position: relative;
 }
 
 .card-body {
   position: absolute;
-  width: 40%;
   left: 0.9em;
-  bottom: 0.9em;
+  bottom: 0.7em;
   z-index: 2;
 }
 
@@ -398,11 +407,15 @@ main {
   background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(255,255,255,0.2)) /* idk the most accurate gradient here but it'll do */ 
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   .card-body {
-    min-width: 125px;
-    max-width: 190px;
-    width: 70%;
+    left: 1.1em;
+    bottom: 0.9em;
+  }
+}
+
+@media (min-width: 800px) {
+  .card-body {
     left: 1.3em;
     bottom: 1.1em;
   }
@@ -438,12 +451,13 @@ main {
 .copyright {
   order: 3;
   margin-top: 1em;
+  text-align: right;
 }
 .attribution {
   order: 4;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .footer {
     padding: 3em 0 0;
   }
@@ -513,16 +527,3 @@ Learning Notes:
   google grid overlapping elements
 
 */
-
-/*
-  To do: 
-    tablet design / fully responsive. 
-      use clamp font sizes for header-title + card-body 
-
-    mobile + desktop design = complete. 
-
-    Done today: 
-      finished styling desktop site 
-      js for mobile nav 
-      active states 
-*/ 
